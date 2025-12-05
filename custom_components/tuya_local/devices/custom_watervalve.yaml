@@ -1,0 +1,40 @@
+# valvula para irrigacao https://pt.aliexpress.com/item/1005008721449167.html
+# nano /mnt/inicial/ix-applications/releases/home-assistant/volumes/ix_volumes/config/custom_components/tuya_local/devices/custom_watervalve.yaml
+name: Smart Valve Controller
+products:
+  - id: mdvv4hdf7qfgfcnk
+    manufacturer: Generic
+    model: Smart Valve Controller
+entities:
+  - entity: switch
+    name: Valve A
+    category: config
+    dps:
+      - id: 1
+        type: boolean
+        name: switch
+  - entity: switch
+    name: Valve B
+    category: config
+    dps:
+      - id: 103
+        type: boolean
+        name: switch
+  - entity: sensor
+    name: Battery percentage
+    class: percentage
+    category: diagnostic
+    dps:
+      - id: 7
+        type: integer
+        optional: true
+        name: sensor
+        unit: %
+        class: measurement
+  - entity: switch
+    name: Rain detection
+    category: config
+    dps:
+      - id: 102
+        type: boolean
+        name: switch
