@@ -38,3 +38,12 @@ entities:
       - id: 102
         type: boolean
         name: switch
+  - entity: sensor
+    name: Rain detected
+    category: diagnostic
+    dps:
+      - id: 101
+        type: boolean
+        optional: true
+        name: sensor
+        class: measurement
