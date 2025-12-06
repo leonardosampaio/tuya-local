@@ -1,5 +1,49 @@
 # valvula para irrigacao https://pt.aliexpress.com/item/1005008721449167.html
 # nano /mnt/inicial/ix-applications/releases/home-assistant/volumes/ix_volumes/config/custom_components/tuya_local/devices/custom_watervalve.yaml
+# {
+#     "name": "Smart Valve Controller",
+#     "id": "eb7f3ad2cd74a032abqupv",
+#     "key": ";Mvz1c-N~r0b*||z",
+#     "mac": "3c:0b:59:a4:7f:05",
+#     "uuid": "8573f56ec3186fd8",
+#     "sn": "1001986810051F",
+#     "category": "sfkzq",
+#     "product_name": "Smart Valve Controller",
+#     "product_id": "mdvv4hdf7qfgfcnk",
+#     "biz_type": 18,
+#     "model": "HH-VALC",
+#     "sub": false,
+#     "icon": "https://images.tuyaus.com/smart/icon/bay160585829854911MU/093fde279e6aafbaefcf5816d59bb570.jpg",
+#     "mapping": {
+#         "1": {
+#             "code": "switch",
+#             "type": "Boolean",
+#             "values": {}
+#         },
+#         "7": {
+#             "code": "battery_percentage",
+#             "type": "Integer",
+#             "values": {
+#                 "unit": "%",
+#                 "min": 0,
+#                 "max": 100,
+#                 "scale": 0,
+#                 "step": 1
+#             }
+#         },
+#         "11": {
+#             "code": "countdown",
+#             "type": "Integer",
+#             "values": {
+#                 "unit": "M",
+#                 "min": 0,
+#                 "max": 120,
+#                 "scale": 0,
+#                 "step": 1
+#             }
+#         }
+#     }
+# }
 name: Smart Valve Controller
 products:
   - id: mdvv4hdf7qfgfcnk
@@ -47,3 +91,16 @@ entities:
         optional: true
         name: sensor
         class: measurement
+  - entity: number
+    name: Countdown
+    category: config
+    class: duration
+    dps:
+      - id: 11
+        type: integer
+        name: value
+        unit: min
+        range:
+          min: 0
+          max: 120
+
