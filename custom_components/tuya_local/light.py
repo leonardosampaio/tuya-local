@@ -289,7 +289,11 @@ class TuyaLocalLight(TuyaLocalEntity, LightEntity):
                 )
                 r = self._brightness_dps.range(self._device)
                 if r:
-                    bright = color_util.brightness_to_value(r, bright)
+                    # ensure full range is used
+                    if bright == 1 and r[0] != 0:
+                        bright = r[0]
+                    else:
+                        bright = color_util.brightness_to_value(r, bright)
 
                 settings = {
                     **settings,
@@ -448,7 +452,11 @@ class TuyaLocalLight(TuyaLocalEntity, LightEntity):
 
             r = self._brightness_dps.range(self._device)
             if r:
-                bright = color_util.brightness_to_value(r, bright)
+                # ensure full range is used
+                if bright == 1 and r[0] != 0:
+                    bright = r[0]
+                else:
+                    bright = color_util.brightness_to_value(r, bright)
 
             settings = {
                 **settings,
@@ -472,7 +480,7 @@ class TuyaLocalLight(TuyaLocalEntity, LightEntity):
                     ),
                 }
 
-        if self._switch_dps and not self.is_on:
+        if self._switch_dps and not self.is_on and self._switch_dps.id not in settings:
             if (
                 self._switch_dps.readonly
                 and self._effect_dps

@@ -280,8 +280,7 @@ equivalents, other units are currently ASCII so can be easily entered directly).
 
 *Optional.*
 
-For sensors, this sets the state class of the sensor (measurement, total
-or total_increasing)
+For sensors, this sets the state class of the sensor (`measurement`, `measurement_angle`, `total` or `total_increasing`)
 
 
 ### `format`
@@ -303,6 +302,12 @@ For base64 and hex types, this specifies how to extract a single numeric value f
 *Optional, default="big"*
 
 For base64 and hex types, this specifies the endianess of the data and mask. Could be "big" or "little".
+
+### `mask_signed`
+
+*Optional, default=false*
+
+For base64 and hex types, set this to true if you need to extract a signed integer from the masked field.
 
 ## Mapping Rules
 
@@ -649,6 +654,16 @@ Either **position**, **action** or **open** should be specified otherwise the co
 - **open** (optional, boolean): a dp that reports if the cover is open. Only used if **position** is not available.
 - **tilt_position** (optional, number): a dp to control the tilt opening of the cover (an example is venetian blinds that tilt as well as go up and down). The range will be auto-converted to the 0-100 expected by HA.
 
+### `datetime`
+*At least one of the following dps is required**
+
+- **year** (optional, integer in range 1970-) - the year component
+- **month** (optional, integer in range 1-12) - the month component
+- **day** (optional, integer in range 1-31) - the day component
+- **hour** (optional, integer in range 0-24 or more if this is the only dp) - the hour component
+- **minute** (optional, integer in range 0-60 or more if the only dp) - the minute component
+- **second** (optional, integer in range 0-60 or more if the only dp) - the second component. If this is the only component, this is equivalent to `unixtime`.
+
 ### `fan`
 - **switch** (optional, boolean): a dp to control the power state of the fan
 - **preset_mode** (optional, mapping of strings): a dp to control different modes of the fan.
@@ -783,6 +798,7 @@ to use it for other length timers.
 
 ### `valve`
 - **valve** (required, boolean or integer): a dp that reports the current state of the valve, and if not readonly, can also be used to set the state.  If a number, it should be a percentage between 0 and 100 indicating how far open the valve is.  If a boolean, it should indicate open (true) or closed (false).
+- **switch** (optional, boolean): if the valve dp is an integer, the valve may also have a boolean switch dp for closing and opening the valve without affecting the open valve position.
 
 ### `water_heater`
 - **current_temperature** (optional, number): a dp that reports the current water temperature.

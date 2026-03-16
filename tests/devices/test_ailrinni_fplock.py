@@ -24,8 +24,6 @@ UNLOCK_OFFLINE_DP = "67"
 
 
 class TestAilrinniFingerprintLock(TuyaDeviceTestCase):
-    __test__ = True
-
     def setUp(self):
         self.setUpForConfig(
             "ailrinni_fingerprint_lock.yaml", AILRINNI_FINGERPRINTLOCK_PAYLOAD
@@ -52,7 +50,7 @@ class TestAilrinniFingerprintLock(TuyaDeviceTestCase):
     async def test_lock(self):
         """Test locking the lock."""
         expected = b64encode(
-            b"\x00" + b"\x00\x01" + b"12345678" + b"\x00\x00\x00"
+            b"\x00\x00\x01" + b"12345678" + b"\x00\x00",
         ).decode("utf-8")
         async with assert_device_properties_set(
             self.subject._device,
@@ -63,7 +61,7 @@ class TestAilrinniFingerprintLock(TuyaDeviceTestCase):
     async def test_unlock(self):
         """Test unlocking the lock."""
         expected = b64encode(
-            b"\x01" + b"\x00\x01" + b"12345678" + b"\x00\x00\x00"
+            b"\x01\x00\x01" + b"12345678" + b"\x00\x00",
         ).decode("utf-8")
         async with assert_device_properties_set(
             self.subject._device,

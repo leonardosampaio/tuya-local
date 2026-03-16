@@ -1,4 +1,3 @@
-
 {
     "title": "Tuya Local",
     "config": {
@@ -31,11 +30,11 @@
             },
             "search": {
                 "title": "Temukan alamat IP perangkat",
-                "description": "Tuya cloud tidak menyediakan alamat IP lokal jadi sekarang kami harus mencari di jaringan lokal Anda untuk menemukan perangkat. "
+                "description": "{device_name}Tuya cloud tidak menyediakan alamat IP lokal jadi sekarang kami harus mencari di jaringan lokal Anda untuk menemukan perangkat. "
             },
             "local": {
                 "title": "Konfigurasikan perangkat Tuya Local Anda",
-                "description": "[Ikuti petunjuk ini untuk menemukan ID perangkat dan kunci lokal.](https://github.com/make-all/tuya-local#finding-your-device-id-and-local-key)",
+                "description": "{device_name}[Ikuti petunjuk ini untuk menemukan ID perangkat dan kunci lokal.]({device_details_url})",
                 "data": {
                     "host": "Alamat IP atau nama hos",
                     "device_id": "ID Perangkat (device_id, atau device_id dari gateway untuk perangkat yang tersambung via gateway)",
@@ -47,14 +46,21 @@
             },
             "select_type": {
                 "title": "Pilih tipe perangkat",
-                "description": "Pilih tipe yang cocok dengan perangkat Anda",
+                "description": "{device_name}Pilih tipe yang cocok dengan perangkat Anda",
+                "data": {
+                    "type": "Tipe perangkat"
+                }
+            },
+            "select_type_auto_detected": {
+                "title": "Pilih tipe perangkat",
+                "description": "{device_name}Pilih tipe yang cocok dengan perangkat Anda. Versi protokol {detected_protocol} terdeteksi secara otomatis dan disimpan. Jika Anda memperbarui firmware perangkat di masa mendatang, Anda mungkin perlu mengkonfigurasi ulang integrasi ini.",
                 "data": {
                     "type": "Tipe perangkat"
                 }
             },
             "choose_entities": {
                 "title": "Detail perangkat",
-                "description": "Buat nama untuk perangkat ini",
+                "description": "{device_name}Buat nama untuk perangkat ini",
                 "data": {
                     "name": "Nama"
                 }
@@ -66,7 +72,7 @@
             "no_devices": "Tidak dapat menemukan perangkat yang tidak terdaftar untuk akun tersebut."
         },
         "error": {
-            "connection": "Tidak dapat terkoneksi ke perangkat tersebut. Bisa jadi sementara, atau ada kesalahan.",
+            "connection": "Tidak dapat terkoneksi ke perangkat Anda dengan detail tersebut. Bisa jadi masalah sementara, atau mungkin salah. Jika Anda memilih versi protokol tertentu, coba 'otomatis' sebagai gantinya.",
             "does_not_need_hub": "Perangkat tidak memerlukan gateway dan satu telah dipilih. ",
             "needs_hub": "Perangkat memerlukan gateway dan tidak ada yang dipilih."
         }
@@ -84,7 +90,7 @@
         "step": {
             "user": {
                 "title": "Konfigurasikan perangkat Tuya Local Anda",
-                "description": "[Ikuti petunjuk ini untuk menemukan ID perangkat dan kunci lokal.](https://github.com/make-all/tuya-local#finding-your-device-id-and-local-key)",
+                "description": "[Ikuti petunjuk ini untuk menemukan ID perangkat dan kunci lokal.]({device_details_url})",
                 "data": {
                     "host": "Alamat IP atau nama hos",
                     "local_key": "Kunci lokal (local_key)",
@@ -94,7 +100,7 @@
             }
         },
         "error": {
-            "connection": "Tidak dapat terkoneksi ke perangkat tersebut. Bisa jadi sementara, atau ada kesalahan."
+            "connection": "Tidak dapat terkoneksi ke perangkat Anda dengan detail tersebut. Bisa jadi masalah sementara, atau mungkin salah. Jika Anda memilih versi protokol tertentu, coba 'otomatis' sebagai gantinya."
         },
         "abort": {
             "not_supported": "Maaf, perangkat ini belum didukung."
@@ -114,6 +120,43 @@
                 "state": {
                     "off": "Normal",
                     "on": "Pencairan bunga es"
+                }
+            },
+            "delayed_fan_operation": {
+                "name": "Operasi kipas tertunda",
+                "state": {
+                    "off": "Mati",
+                    "on": "Tertunda"
+                }
+            },
+            "problem": {
+                "state_attributes": {
+                    "description": {
+                        "state": {
+                            "chamber_low_temperature": "Kamar terlalu dingin",
+                            "chamber_overheat": "Kamar terlalu panas",
+                            "communication_error": "Kesalahan komunikasi",
+                            "drain_blocked": "Saluran pembuangan tersumbat",
+                            "evaporation_tray_low_temperature": "Nampan penguapan terlalu dingin",
+                            "evaporation_tray_overheat": "Nampan penguapan terlalu panas",
+                            "fire": "Kebakaran",
+                            "firewall_sensor_fault": "Kesalahan sensor firewall",
+                            "gas_leak": "Kebocoran gas",
+                            "heating_fault": "Kesalahan pemanasan",
+                            "no_water": "Tidak ada air",
+                            "ok": "Oke",
+                            "overflow": "Melimpah",
+                            "receive_error": "Kesalahan penerimaan",
+                            "sensor_open_circuit": "Sensor sirkuit terbuka",
+                            "sensor_short_circuit": "Sensor korsleting",
+                            "sensor_fault": "Kesalahan sensor",
+                            "transmit_error": "Kesalahan transmisi",
+                            "valve_fault": "Kesalahan katup",
+                            "variable_frequency_fault": "Kesalahan frekuensi variabel",
+                            "washing_motor_fault": "Kesalahan motor cuci",
+                            "water_removed_or_empty": "Air dihilangkan atau kosong"
+                        }
+                    }
                 }
             },
             "tank_empty": {
@@ -137,20 +180,18 @@
                     "on": "Bangun"
                 }
             },
-            "casdon_oven_fault": {
-                "state_attributes": {
-                    "description": {
-                        "state": {
-                            "e1": "E1: Perlindungan kelebihan panas ruang (melebihi 290°C)",
-                            "e2": "E2: Perlindungan kelebihan panas nampan penguapan (melebihi 200°C)",
-                            "e3": "E3: Perlindungan suhu rendah ruang (di bawah 35°C)",
-                            "e4": "E4: Perlindungan suhu rendah nampan penguapan (di bawah 35°C)",
-                            "e5": "E5: Kesalahan koneksi sensor (Sirkuit terbuka)",
-                            "e6": "E6: Sensor rusak (Korsleting)",
-                            "e7": "E7: Kesalahan komunikasi papan tampilan",
-                            "e8": "E8: Tangki air terbuka (CN7) atau Nampan penguapan kering (CN3)"
-                        }
-                    }
+            "rinse_aid": {
+                "name": "Bantuan bilas",
+                "state": {
+                    "off": "Cukup",
+                    "on": "Rendah"
+                }
+            },
+            "salt": {
+                "name": "Garam",
+                "state": {
+                    "off": "Cukup",
+                    "on": "Rendah"
                 }
             }
         },
@@ -204,6 +245,9 @@
                         }
                     }
                 }
+            },
+            "cold_water": {
+                "name": "Air dingin"
             },
             "thermostat": {
                 "name": "Termostat",
@@ -267,7 +311,21 @@
                 }
             },
             "heater": {
-                "name": "Pemanas"
+                "name": "Pemanas",
+                "state_attributes": {
+                    "preset_mode": {
+                        "state": {
+                            "low": "Rendah",
+                            "medium": "Sedang",
+                            "high": "Tinggi",
+                            "program_1": "Program 1",
+                            "program_2": "Program 2",
+                            "program_3": "Program 3",
+                            "standby": "Siaga",
+                            "fan_only": "Hanya kipas"
+                        }
+                    }
+                }
             },
             "thermo_switch": {
                 "state_attributes": {
@@ -304,19 +362,23 @@
                             "custom": "Kustom",
                             "low_steaming": "Perebusan rendah",
                             "medium_steaming": "Perebusan sedang",
-                            "high_steaming": "Perebusan tinggi"
+                            "high_steaming": "Perebusan tinggi",
+                            "steaming": "Perebusan",
+                            "hot_air_baking": "Panggang udara panas",
+                            "disinfect": "Disinfeksi"
                         }
                     }
                 }
             }
         },
         "humidifier": {
-            "dehumidifier": {
+            "extended": {
                 "state_attributes": {
                     "mode": {
                         "state": {
                             "laundry": "Pakaian Kering",
-                            "purify": "Penjernih"
+                            "purify": "Penjernih",
+                            "continuous": "Terus menerus"
                         }
                     }
                 }
@@ -362,6 +424,9 @@
                             "smart": "Pintar",
                             "strong": "Kencang",
                             "custom": "Kustom",
+                            "auto": "Otomatis",
+                            "manual": "Manual",
+                            "program": "Program",
                             "high": "Tinggi",
                             "medium": "Sedang",
                             "low": "Rendah",
@@ -380,6 +445,7 @@
                             "circulate": "Sirkulasi",
                             "sleep": "Tidur",
                             "auto": "Otomatis",
+                            "manual": "Manual",
                             "eco": "Hemat",
                             "anti-condensation": "Anti kondensasi",
                             "extractor": "Ekstraktor",
@@ -416,6 +482,12 @@
             },
             "nightlight": {
                 "name": "Cahaya malam"
+            },
+            "oven_light": {
+                "name": "Lampu oven"
+            },
+            "rangehood_light": {
+                "name": "Lampu penangas"
             }
         },
         "lock": {
@@ -424,14 +496,35 @@
             }
         },
         "number": {
+            "manual_feed": {
+                "name": "Pemberian makan manual"
+            },
+            "maximum_temperature": {
+                "name": "Suhu maksimum"
+            },
+            "minimum_temperature": {
+                "name": "Suhu minimum"
+            },
+            "sensor_threshold": {
+                "name": "Ambang {sensor}"
+            },
+            "temperature_calibration": {
+                "name": "Kalibrasi suhu"
+            },
             "timer": {
                 "name": "Pengatur waktu"
             },
             "timer_x": {
                 "name": "Pengatur waktu {x}"
             },
-            "sensor_threshold": {
-                "name": "Ambang {sensor}"
+            "volume": {
+                "name": "Volume"
+            },
+            "bottom_temperature": {
+                "name": "Suhu bawah"
+            },
+            "top_temperature": {
+                "name": "Suhu atas"
             }
         },
         "select": {
@@ -485,7 +578,8 @@
                     "honey_water": "Air madu",
                     "infant_formula": "Susu formula bayi",
                     "white_tea": "Teh putih",
-                    "oolong_tea": "Teh oolong"
+                    "oolong_tea": "Teh oolong",
+                    "water": "Air"
                 }
             },
             "language": {
@@ -493,17 +587,22 @@
                 "state": {
                     "chinese": "中文",
                     "chinese_traditional": "中文(繁體)",
+                    "danish": "Dansk",
+                    "dutch": "Nederlands",
                     "english": "English",
+                    "english_child": "English (Child)",
                     "french": "Français",
                     "german": "Deutsch",
                     "italian": "Italiano",
                     "japanese": "日本語",
                     "korean": "한국어",
-                    "latin": "Lingua Latina",
+                    "latin": "Español latinoamericano",
                     "portuguese": "Português",
                     "russian": "Русский",
                     "spanish": "Español",
-                    "turkish": "Türkçe"
+                    "turkish": "Türkçe",
+                    "polish": "Polski",
+                    "vietnamese": "Tiếng Việt"
                 }
             },
             "light_mode": {
@@ -512,7 +611,9 @@
                     "off": "Mati",
                     "on": "Hidup",
                     "state": "Status",
-                    "locator": "Penanda"
+                    "locator": "Penanda",
+                    "auto": "Otomatis",
+                    "flash": "Kedip"
                 }
             },
             "mopping": {
@@ -524,6 +625,15 @@
                     "medium": "Sedang",
                     "high": "Tinggi",
                     "very_high": "Sangat tinggi"
+                }
+            },
+            "motion_sensitivity": {
+                "name": "Sensitivitas gerakan",
+                "state": {
+                    "off": "Mati",
+                    "low": "Rendah",
+                    "medium": "Sedang",
+                    "high": "Tinggi"
                 }
             },
             "recipe": {
@@ -577,9 +687,13 @@
                 "state": {
                     "cancel": "Batal",
                     "continuous": "Terus menerus",
+                    "15s": "15 detik",
+                    "20s": "20 detik",
                     "30s": "30 detik",
+                    "45s": "45 detik",
                     "1m": "1 menit",
                     "2m": "2 menit",
+                    "3m": "3 menit",
                     "5m": "5 menit",
                     "10m": "10 menit",
                     "15m": "15 menit",
@@ -661,6 +775,171 @@
                     "trip_breaker": "Pemutus sirkuit"
                 }
             },
+            "mode": {
+                "name": "Mode",
+                "state": {
+                    "auto": "Otomatis",
+                    "manual": "Manual",
+                    "off": "Mati",
+                    "low": "Rendah",
+                    "medium": "Sedang",
+                    "high": "Tinggi",
+                    "rapid_clean": "Pembersihan cepat",
+                    "schedule": "Jadwal"
+                }
+            },
+            "activation_mode": {
+                "name": "Mode aktivasi",
+                "state": {
+                    "normal": "Normal",
+                    "smart": "Pintar",
+                    "night": "Malam",
+                    "motion": "Gerakan",
+                    "off": "Mati"
+                }
+            },
+            "bidet_mode": {
+                "name": "Mode bidet",
+                "state": {
+                    "normal": "Normal",
+                    "dry": "Kering",
+                    "child": "Anak"
+                }
+            },
+            "curtain_mode": {
+                "name": "Mode tirai",
+                "state": {
+                    "morning": "Pagi",
+                    "night": "Malam"
+                }
+            },
+            "chlorination_mode": {
+                "name": "Mode klorinasi",
+                "state": {
+                    "inverter": "Inverter",
+                    "auto_ph": "pH otomatis",
+                    "smart": "Pintar",
+                    "manual": "Manual"
+                }
+            },
+            "alarm_mode": {
+                "name": "Mode alarm",
+                "state": {
+                    "sound": "Suara",
+                    "light": "Cahaya",
+                    "sound_and_light": "Suara dan cahaya"
+                }
+            },
+            "air_mode": {
+                "name": "Mode udara",
+                "state": {
+                    "dehumidify": "Pengering",
+                    "purify": "Penjernih",
+                    "dehumidify_and_purify": "Pengering dan penjernih"
+                }
+            },
+            "cleaning_mode": {
+                "name": "Mode pembersihan",
+                "state": {
+                    "sweep": "Menyapu",
+                    "mop": "Memop",
+                    "sweep_and_mop": "Menyapu dan memop",
+                    "intensive": "Intensif",
+                    "quiet": "Senyap",
+                    "sweep_before_mopping": "Menyapu sebelum memop"
+                }
+            },
+            "washing_mode": {
+                "name": "Mode pencucian",
+                "state": {
+                    "fruit": "Buah",
+                    "intensive": "Intensif",
+                    "rapid": "Cepat",
+                    "eco": "Hemat",
+                    "standard": "Standar",
+                    "neutral": "Netral",
+                    "90_minute": "90 menit",
+                    "glass": "Kaca",
+                    "auto": "Otomatis",
+                    "soak": "Rendam",
+                    "self_clean": "Pembersihan sendiri",
+                    "hygiene": "Higiene",
+                    "party": "Pesta",
+                    "baby_care": "Perawatan bayi",
+                    "hour_wash": "Cuci 1 jam",
+                    "dry": "Kering",
+                    "storage": "Penyimpanan",
+                    "light": "Ringan",
+                    "pots": "Panci"
+                }
+            },
+            "water_hardness": {
+                "name": "Kekerasan air"
+            },
+            "rinse_aid_level": {
+                "name": "Tingkat bantuan bilas"
+            },
+            "rack": {
+                "name": "Rak",
+                "state": {
+                    "lower": "Bawah",
+                    "upper": "Atas",
+                    "both": "Keduanya"
+                }
+            },
+            "rangehood_mode": {
+                "name": "Mode penangas",
+                "state": {
+                    "steaming": "Perebusan",
+                    "regular": "Reguler",
+                    "strong": "Kuat"
+                }
+            },
+            "rangehood_fan_speed": {
+                "name": "Kecepatan kipas penangas",
+                "state": {
+                    "off": "Mati",
+                    "low": "Rendah",
+                    "medium": "Sedang",
+                    "high": "Tinggi",
+                    "quickfry": "Penggorengan cepat"
+                }
+            },
+            "rangehood_delayed_shutdown": {
+                "name": "Penangas mati tertunda",
+                "state": {
+                    "disabled": "Nonaktif",
+                    "1m": "1 menit",
+                    "2m": "2 menit",
+                    "3m": "3 menit",
+                    "4m": "4 menit",
+                    "5m": "5 menit",
+                    "6m": "6 menit",
+                    "7m": "7 menit",
+                    "8m": "8 menit",
+                    "9m": "9 menit",
+                    "10m": "10 menit"
+                }
+            },
+            "menu": {
+                "name": "Menu",
+                "state": {
+                    "home": "Beranda",
+                    "mode": "Mode",
+                    "recode": "Rekam",
+                    "settings": "Pengaturan"
+                }
+            },
+            "charging_mode": {
+                "name": "Mode pengisian daya",
+                "state": {
+                    "immediate": "Segera",
+                    "charge_to_percent": "Isi daya hingga persentase",
+                    "fixed_charge": "Isi daya tetap",
+                    "scheduled_charge": "Isi daya terjadwal",
+                    "delayed_charge": "Isi daya tertunda"
+                }
+            },
             "oven_built_in_recipe": {
                 "name": "Resep bawaan",
                 "state": {
@@ -699,6 +978,14 @@
             }
         },
         "sensor": {
+            "cleanliness": {
+                "name": "Kebersihan",
+                "state": {
+                    "poor": "Buruk",
+                    "good": "Baik",
+                    "great": "Sangat baik"
+                }
+            },
             "air_quality": {
                 "name": "Kualitas udara",
                 "state": {
@@ -725,6 +1012,8 @@
                     "waiting_for_authorization": "Menunggu otorisasi",
                     "standby": "Siaga",
                     "heating": "Pemanasan",
+                    "cold": "Dingin",
+                    "warm": "Hangat",
                     "cooling": "Pendinginan",
                     "keeping_warm": "Tetap hangat",
                     "no_water": "Tidak ada air",
@@ -788,10 +1077,23 @@
                     "missing": "Hilang",
                     "formatting": "Memformat",
                     "unformatted": "Belum diformat",
+                    "failed": "Gagal",
+                    "replying": "Membalas",
+                    "playback": "Pemutaran",
                     "maintenance_required": "Perawatan diperlukan",
                     "dry": "Kering",
                     "comfortable": "Nyaman",
-                    "damp": "Lembab"
+                    "damp": "Lembab",
+                    "smoothing": "Menghaluskan",
+                    "cleaned": "Dibersihkan",
+                    "cold_water_unavailable": "Air dingin tidak tersedia",
+                    "drain": "Membuang",
+                    "drain_cold_water": "Membuang air dingin",
+                    "drain_hot_water": "Membuang air panas",
+                    "drain_normal_water": "Membuang air normal",
+                    "high_temperature_emptying": "Pengosongan suhu tinggi",
+                    "high_temperature_emptied": "Pengosongan suhu tinggi selesai",
+                    "storage": "Penyimpanan"
                 }
             },
             "time_remaining": {
@@ -841,11 +1143,23 @@
             },
             "power_x": {
                 "name": "Daya {x}"
+            },
+            "filter_life": {
+                "name": "Umur filter"
+            },
+            "days_stored": {
+                "name": "Hari tersimpan"
             }
         },
         "switch": {
             "anti_frost": {
                 "name": "Anti beku"
+            },
+            "auto_clean": {
+                "name": "Pembersihan otomatis"
+            },
+            "auto_light": {
+                "name": "Lampu otomatis"
             },
             "breaker": {
                 "name": "Pemutus sirkuit",
@@ -860,6 +1174,9 @@
             "evaporator_cleaning": {
                 "name": "Pembersihan evaporator"
             },
+            "flip_image": {
+                "name": "Balik gambar"
+            },
             "ionizer": {
                 "name": "Pengion"
             },
@@ -872,6 +1189,9 @@
             "sleep": {
                 "name": "Tidur"
             },
+            "sound": {
+                "name": "Suara"
+            },
             "switch_x": {
                 "name": "Saklar {x}"
             },
@@ -880,6 +1200,18 @@
             },
             "uv_sterilization": {
                 "name": "Sterilisasi UV"
+            },
+            "auto_storage": {
+                "name": "Penyimpanan otomatis"
+            },
+            "auto_dry": {
+                "name": "Pengeringan otomatis"
+            },
+            "oven": {
+                "name": "Oven"
+            },
+            "rangehood": {
+                "name": "Penangas"
             }
         },
         "text": {
@@ -888,6 +1220,12 @@
             }
         },
         "time": {
+            "reservation_time": {
+                "name": "Waktu pemesanan"
+            },
+            "cooking_time": {
+                "name": "Waktu memasak"
+            },
             "timer": {
                 "name": "Pengatur waktu"
             },
@@ -906,6 +1244,9 @@
             },
             "kettle": {
                 "name": "Ketel"
+            },
+            "hot_water": {
+                "name": "Air panas"
             }
         }
     }

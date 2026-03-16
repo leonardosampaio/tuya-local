@@ -3,6 +3,7 @@ name: Dehumidifier
 entities:
   - entity: humidifier
     class: dehumidifier
+    translation_only_key: extended
     dps:
       - id: 1
         name: switch
@@ -122,3 +123,11 @@ entities:
       - id: 19
         type: bitfield
         name: fault_code
+  - entity: lock
+    translation_key: child_lock
+    category: config
+    dps:
+      - id: 16
+        type: boolean
+        name: lock
+        optional: true

@@ -90,8 +90,7 @@ entities:
         name: switch
 
   - entity: switch
-    name: Flip image
-    icon: "mdi:flip-horizontal"
+    translation_key: flip_image
     category: config
     # Flip Image Switch (matches basic_flip: 103)
     dps:
@@ -167,8 +166,7 @@ entities:
   # 5. Alarm Mode & Linkage
   # ------------------------------------
   - entity: select
-    name: Alarm mode
-    icon: "mdi:bell-ring-outline"
+    translation_key: alarm_mode
     category: config
     # Alarm Mode (matches alarm_mode: 243)
     dps:

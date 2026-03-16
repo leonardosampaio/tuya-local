@@ -24,6 +24,7 @@ entities:
   - entity: sensor
     category: diagnostic
     class: voltage
+    hidden: unavailable
     dps:
       - id: 20
         name: sensor
@@ -38,9 +39,18 @@ entities:
         type: integer
         name: calibration
         optional: true
+      - id: 20
+        type: integer
+        optional: true
+        name: available
+        mapping:
+          - dps_val: null
+            value: false
+          - value: true
   - entity: sensor
     category: diagnostic
     class: current
+    hidden: unavailable
     dps:
       - id: 18
         name: sensor
@@ -53,9 +63,18 @@ entities:
         type: integer
         name: calibration
         optional: true
+      - id: 18
+        type: integer
+        optional: true
+        name: available
+        mapping:
+          - dps_val: null
+            value: false
+          - value: true
   - entity: sensor
     category: diagnostic
     class: power
+    hidden: unavailable
     dps:
       - id: 19
         name: sensor
@@ -70,67 +89,60 @@ entities:
         type: integer
         name: calibration
         optional: true
+      - id: 19
+        type: integer
+        optional: true
+        name: available
+        mapping:
+          - dps_val: null
+            value: false
+          - value: true
   - entity: time
     category: config
     translation_key: timer
+    hidden: unavailable
     dps:
       - id: 9
         type: integer
+        optional: true
         name: second
         range:
           min: 0
           max: 86400
+      - id: 9
+        type: integer
+        optional: true
+        name: available
+        mapping:
+          - dps_val: null
+            value: false
+          - value: true
   - entity: time
     category: config
     translation_key: timer_x
     translation_placeholders:
       x: USB
+    hidden: unavailable
     dps:
       - id: 15
         type: integer
+        optional: true
         name: second
         range:
           min: 0
           max: 86400
-  - entity: number
-    category: config
-    name: Outlet timer
-    class: duration
-    translation_key: timer
-    # 2025-07-20
-    deprecated: time.timer
-    dps:
-      - id: 9
-        type: integer
-        name: value
-        unit: min
-        range:
-          min: 0
-          max: 86400
-        mapping:
-          - scale: 60
-            step: 60
-  - entity: number
-    name: USB timer
-    category: config
-    class: duration
-    translation_key: timer
-    # 2025-07-20
-    deprecated: time.timer_usb
-    dps:
       - id: 15
         type: integer
-        name: value
-        unit: min
-        range:
-          min: 0
-          max: 86400
+        optional: true
+        name: available
         mapping:
-          - scale: 60
-            step: 60
+          - dps_val: null
+            value: false
+          - value: true
   - entity: select
     translation_key: initial_state
     category: config
+    hidden: unavailable
     dps:
       - id: 38
         type: string
@@ -143,9 +155,18 @@ entities:
             value: "off"
           - dps_val: last
             value: memory
+      - id: 38
+        type: string
+        optional: true
+        name: available
+        mapping:
+          - dps_val: null
+            value: false
+          - value: true
   - entity: select
     translation_key: light_mode
     category: config
+    hidden: unavailable
     dps:
       - id: 39
         type: string
@@ -158,6 +179,14 @@ entities:
             value: locator
           - dps_val: none
             value: "off"
+      - id: 39
+        type: string
+        optional: true
+        name: available
+        mapping:
+          - dps_val: null
+            value: false
+          - value: true
   - entity: binary_sensor
     class: problem
     category: diagnostic
