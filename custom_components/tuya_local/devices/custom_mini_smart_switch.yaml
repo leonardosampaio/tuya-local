@@ -1,6 +1,107 @@
 # swicth 1 polo https://shopee.com.br/M%C3%B3dulo-Interruptor-Inteligente-Tuya-WiFi-Suporta-Controle-1-canal-100-240V-Funciona-com-Alexa-Google-Home-canaa-yl-i.1000233979.23294392891
 # https://shopee.com.br/user/purchase/order/227442338119219?type=6
 # nano /mnt/inicial/ix-applications/releases/home-assistant/volumes/ix_volumes/config/custom_components/tuya_local/devices/custom_mini_smart_switch.yaml
+# {
+#         "name": "\u8ff7\u4f60MINI\u901a\u65ad\u5668 1\u8def",
+#         "id": "eba3f5128af1268445jjxo",
+#         "key": "Zk)>'b2fW*SW/hYX",
+#         "mac": "20:f1:b2:28:8d:fb",
+#         "uuid": "19abb61a33e20524",
+#         "sn": "10021872602D13",
+#         "category": "tdq",
+#         "product_name": " \u8ff7\u4f60MINI\u901a\u65ad\u5668 1\u8def",
+#         "product_id": "dfs6sn0hbmfqqu3v",
+#         "biz_type": 18,
+#         "model": "\u8ff7\u4f60MINI\u901a\u65ad\u5668 1\u8def",
+#         "sub": false,
+#         "icon": "https://images.tuyaus.com/smart/icon/ay1542357280256OSPHK/98be43fc07026f4771db65f27b647d7d.jpg",
+#         "mapping": {
+#             "1": {
+#                 "code": "switch_1",
+#                 "type": "Boolean",
+#                 "values": {}
+#             },
+#             "9": {
+#                 "code": "countdown_1",
+#                 "type": "Integer",
+#                 "values": {
+#                     "unit": "s",
+#                     "min": 0,
+#                     "max": 86400,
+#                     "scale": 0,
+#                     "step": 1
+#                 }
+#             },
+#             "38": {
+#                 "code": "relay_status",
+#                 "type": "Enum",
+#                 "values": {
+#                     "range": [
+#                         "0",
+#                         "1",
+#                         "2"
+#                     ]
+#                 }
+#             },
+#             "42": {
+#                 "code": "random_time",
+#                 "type": "String",
+#                 "values": "{\"maxlen\":255}"
+#             },
+#             "43": {
+#                 "code": "cycle_time",
+#                 "type": "String",
+#                 "values": "{\"maxlen\":255}"
+#             },
+#             "44": {
+#                 "code": "switch_inching",
+#                 "type": "String",
+#                 "values": "{\"maxlen\":255}"
+#             },
+#             "47": {
+#                 "code": "switch_type",
+#                 "type": "Enum",
+#                 "values": {
+#                     "range": [
+#                         "flip",
+#                         "sync",
+#                         "button"
+#                     ]
+#                 }
+#             },
+#             "49": {
+#                 "code": "remote_add",
+#                 "type": "Raw",
+#                 "values": {}
+#             },
+#             "50": {
+#                 "code": "remote_list",
+#                 "type": "Raw",
+#                 "values": {}
+#             }
+#         }
+#     },
+# 
+# (venv) ~/git/tuya git:(master) ✗ python3 test.py
+# === Device Information ===
+# Device ID: eba3f5128af1268445jjxo
+# IP Address: 192.168.0.194
+# Version: 3.4
+
+# === Device Status (Payload) ===
+# Device status: {'dps': {'1': False, '9': 0, '38': 'memory', '42': '', '43': '', '44': 'AAAC', '47': 'flip'}}
+
+# === Parsed Device Data Points (DPS) ===
+# DPS 1: False
+# DPS 9: 0
+# DPS 38: memory
+# DPS 42: 
+# DPS 43: 
+# DPS 44: AAAC
+# DPS 47: flip
+
+# === Available DPS ===
+# Available DPS: {'1': None, '9': None, '38': None, '42': None, '43': None, '44': None, '47': None}
 name: Mini Smart Switch
 products:
   - id: dfs6sn0hbmfqqu3v
