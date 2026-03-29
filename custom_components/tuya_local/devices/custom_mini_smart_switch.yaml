@@ -1,0 +1,14 @@
+# swicth 1 polo https://shopee.com.br/M%C3%B3dulo-Interruptor-Inteligente-Tuya-WiFi-Suporta-Controle-1-canal-100-240V-Funciona-com-Alexa-Google-Home-canaa-yl-i.1000233979.23294392891
+# https://shopee.com.br/user/purchase/order/227442338119219?type=6
+# nano /mnt/inicial/ix-applications/releases/home-assistant/volumes/ix_volumes/config/custom_components/tuya_local/devices/custom_mini_smart_switch.yaml
+name: Mini Smart Switch
+products:
+  - id: dfs6sn0hbmfqqu3v
+    manufacturer: Tuya
+    model: Mini Smart Switch
+entities:
+  - entity: switch
+    dps:
+      - id: 1
+        name: switch
+        type: boolean
