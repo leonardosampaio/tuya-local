@@ -91,16 +91,30 @@ entities:
         optional: true
         name: sensor
         class: measurement
-  - entity: number
-    name: Countdown
-    category: config
-    class: duration
+  - entity: sensor
+    name: Rain detected (numeric)
+    category: diagnostic
     dps:
-      - id: 11
+      - id: 101
         type: integer
-        name: value
-        unit: min
-        range:
-          min: 0
-          max: 120
+        optional: true
+        name: sensor
+        class: measurement
+        mapping:
+          - dps_val: true
+            value: 1
+          - dps_val: false
+            value: 0
+  # - entity: number
+  #   name: Countdown
+  #   category: config
+  #   class: duration
+  #   dps:
+  #     - id: 11
+  #       type: integer
+  #       name: value
+  #       unit: min
+  #       range:
+  #         min: 0
+  #         max: 120
 
